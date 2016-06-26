@@ -197,7 +197,7 @@ module RBase
         name, type, offset, size, decimal = *column_data.unpack('@0a11aLCC')
         name = name.strip
         @columns << Columns::Column.column_for(type).new(name, options.merge(:offset => offset, :size => size, :decimal => decimal))
-        @name_to_columns[name.upcase.to_sym] = @columns.last
+        @name_to_columns[name.to_sym] = @columns.last
       end
 
       @columns.each { |column| column.attach_to(self) }

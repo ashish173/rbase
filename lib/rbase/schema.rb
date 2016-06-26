@@ -34,7 +34,7 @@ module RBase
     #
     #
     def column(name, type, options = {})
-      name = name.to_s.upcase
+      name = name.to_s
       case type
       when :string then type = 'C'
       when :integer then type = 'N'

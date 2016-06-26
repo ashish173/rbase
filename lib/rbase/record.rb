@@ -43,7 +43,7 @@ module RBase
       @values_cached = {}
       @values_changed = {}
 
-      attributes.each { |k, v| @values_changed[k.to_s.upcase] = v }
+      attributes.each { |k, v| @values_changed[k.to_s] = v }
     end
 
     private
@@ -121,7 +121,7 @@ module RBase
 
     # Returns value of specified column
     def get_value(name)
-      name = name.to_s.upcase.to_sym
+      name = name.to_s.to_sym
       return @values_changed[name] if @values_changed.has_key?(name)
       return nil if new_record?
       column = @table.column(name)
@@ -131,7 +131,7 @@ module RBase
 
     # Sets value of specified column.
     def set_value(name, value)
-      name = name.to_s.upcase.to_sym
+      name = name.to_s.to_sym
       raise UnknownColumnError.new(name) unless @table.column(name)
       @values_changed[name] = value
     end

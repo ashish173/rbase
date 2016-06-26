@@ -110,7 +110,7 @@ module RBase
       column_type 'N'
       
       def initialize(name, options = {})
-        size = options[:size] || 18
+        size = options[:size].to_i || 18
         size = 18 if size > 18
         
         super name, options.merge(:size => size)
